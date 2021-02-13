@@ -1,14 +1,9 @@
 class Aircraft
   def land(airport)
-    if airport.weather != "stormy"
-      if airport.hanger.length() < airport.capacity
-        airport.hanger.push(self)
-      end
-    end
+    airport.hanger.push(self) unless airport.at_max_capacity? || airport.weather_is_stormy?
   end
+
   def takeoff(airport)
-    if airport.weather != "stormy"
-      airport.hanger.delete(self)
-    end
+    airport.hanger.delete(self) unless airport.weather_is_stormy?
   end
 end
