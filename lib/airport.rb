@@ -3,9 +3,17 @@ class Airport
   attr_accessor :weather
   attr_accessor :capacity
 
-  def initialize
+  def initialize(capacity: 2, weather: "clear")
     @hanger = []
-    @weather = "clear"
-    @capacity = 2
+    @weather = weather
+    @capacity = capacity
+  end
+
+  def at_max_capacity?
+    hanger.length >= capacity
+  end
+
+  def weather_is_stormy?
+    weather == "stormy"
   end
 end
